@@ -1,71 +1,161 @@
 console.log('js loaded')
 
-const question = document.querySelector('#question');
-const choices = Array.from(document.querySelectorAll('.choice-text'));
-const progressText = document.querySelector('#score');
+
+const startButton = document.getElementById('start-btn')
+const questionContainerElement = document.getElementById('question-container')
+const nextButton = document.getElementById('next-btn')
+const questionElement = document.getElementById('question')
+const answerButtonsElement = document.getElementById('answer-buttons')
+
+let shuffledQuestions, currentQuestionIndex
+
+startButton.addEventListener('click', startGame)
+nextButton.addEventListener('click', () => {
+  currentQuestionIndex++
+  setNextQuestion()
+})
+
+function startGame() {
+    startButton.classList.add('hide')
+    questionContainerElement.classList.remove('hide')  
+    shuffledQuestions = questions.sort(() => Math.random() - .5)
+    currentQuestionIndex = 0
+    setNextQuestion()
+}
+
+function setNextQuestion() {
+  resetState()
+  showQuestion(shuffledQuestions[currentQuestionIndex])
+}
+  
+function showQuestion(question) {
+    questionElement.innerText = question.question
+    question.answers.forEach(answer => {
+        const button = document.createElement('button')
+        button.innerText = answer.text
+        button.classList.add('btn')
+        if (answer.correct) {
+          button.dataset.correct = answer.correct
+        }
+        button.addEventListener('click', selectAnswer)
+        answerButtonsElement.appendChild(button)
+      })
+}
+
+function resetState() {
+  clearStatusClass(document.body)
+  nextButton.classList.add('hide')
+  while (answerButtonsElement.firstChild) {
+    answerButtonsElement.removeChild(answerButtonsElement.firstChild)
+  }
+}
 
 
-let currentQuestion = {}
-let acceptAnswers = true
-let score = 0
-let questionCounter = 0
-let availableQuestions = []
+function selectAnswer(e) {
+  const selectedButton = e.target
+  const correct = selectedButton.dataset.correct
+  setStatusClass(document.body, correct)
+  Array.from(answerButtonsElement.children).forEach(button => {
+    setStatusClass(button, button.dataset.correct)
+  })
+  if (shuffledQuestions.length > currentQuestionIndex + 1) {
+    nextButton.classList.remove('hide')
+  } else {
+    startButton.innerText = 'Restart'
+    startButton.classList.remove('hide')
+  }
+}
+function setStatusClass(element, correct) {
+  clearStatusClass(element)
+  if (correct) {
+    element.classList.add('correct')
+  } else {
+    element.classList.add('wrong')
+  }
+}
+function clearStatusClass(element) {
+  element.classList.remove('correct')
+  element.classList.remove('wrong')
+}
+
 
 let questions = [
     {
         question: 'which state is known for potatoes?',
-        choice1: 'Alabama',
-        choice2: 'Idaho',
-        choice3: 'Alaska',
-        choice4: 'Oregon',
-        answer: 2,
+        answers: [
+            {text: 'Idaho', correct: true},
+            {text: 'Alabama', correct: false},
+            {text: 'New Jersey', correct:false},
+            {text: 'Oregon', correct: false}
+        ]
     },
     {
-        question: 'when did the Lays company start?',
-        choice1: 'Sept 1961',
-        choice2: 'Sept 1951',
-        choice3: 'July 1961',
-        choice4: 'Feb 1981',
-        answer: 1,
+        question: 'when was lays company found?',
+        answers: [
+            {text: 'Sept 1962', correct: false},
+            {text: 'Sept 1971', correct: false},
+            {text: 'Aug 1961', correct:false},
+            {text: 'Sept 1961', correct: true}
+        ]
     },
     {
-        question: 'who is the most powerful potato? ',
-        choice1: 'Darth tater',
-        choice2: 'mash',
-        choice3: 'yams',
-        choice4: 'sweet',
-        answer: 1,
+        question: 'what food contains potatoes in it?',
+        answers: [
+            {text: 'burgers', correct: false},
+            {text: 'tator tots', correct: true},
+            {text: 'lasagna', correct:false},
+            {text: 'cereal', correct: false}
+        ]
     },
     {
-        question: 'which food has potatoes in them?',
-        choice1: 'lasagna',
-        choice2: 'tater tots',
-        choice3: 'burgers',
-        choice4: 'oreos',
-        answer: 2,
+        question: 'what is a potato consist of?',
+        answers: [
+            {text: '20% water 80% solid', correct: false},
+            {text: '80% water 20% solid', correct: true},
+            {text: 'its just a potato', correct:false},
+            {text: '100% solid', correct: false}
+        ]
     },
     {
-        question: 'what are potatoes consists of?',
-        choice1: '80% water 20% solid',
-        choice2: '20% water 80% solid',
-        choice3: 'just eat it',
-        choice4: 'French fries',
-        answer: 1,
-    }
+        question: 'how much potato does an average american consume per year?',
+        answers: [
+            {text: '2 pounds', correct: false},
+            {text: '110 pounds', correct: false},
+            {text: '111 pounds', correct: true},
+            {text: '9 pounds', correct: false}
+        ]
+    },
+   
+   
 ]
 
-const score_points = 100
-const max_questions = 4
 
-startGame = () => {
-    questionCounter = 0
-    score = 0
-    availableQuestions = [... questions]
-    getNewQuestion()
-}
 
-getNewQuestion = () => {
-    if(availableQuestions.length === 0 || questionCounter > max_questions) {
-        localStorage.setItem('mostRecent')
-    }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

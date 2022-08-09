@@ -6,21 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tullie's Trivia</title>
     <link rel="stylesheet" href="./style.css">
-    <script src="./main.js" defer></script>
+   
 </head>
 <body>
-   <h1>Obi-wan JaBlow-Me</h1>
+   <h1>Obi-wan JaBlow-me</h1>
+   
+  </div>
     <div class="container">
-    <div class="question-container"></div>
-   <div id="question">Questions</div>
-   <div id="answer-buttons" class="btn-grid"></div>
-    <button class="button one">Answer 1</button>
-    <button class="button two">Answer 1</button>
-    <div class="Controls" id="controls">
-        <button class="button" id="start-game">start</button>
-        <button class="button" id ="next-question">next</button>
+        <div id="question-container" class="hide">
+            <div id="question">Question</div>
+            <div id="answer-buttons" class="btn-grid">
+                <button class="btn">Answer 1</button>
+                <button class="btn">Answer 2</button>
+                <button class="btn">Answer 3</button>
+                <button class="btn">Answer 4</button>
+            </div>
+        </div>
+        <div class="controls">
+            <button id="start-btn" class="start-btn btn">Start</button>
+            <button id="next-btn" class="next-btn btn hide">Next</button>
+        </div>
     </div>
-</div>
-    
+    <script src="main.js"></script>
 </body>
 </html>
