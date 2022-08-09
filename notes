@@ -1,0 +1,21 @@
+To start the game there will be a start button.
+The purpose of Trivia is to answers the questions correctly.
+THe players will have 20 seconds for the first question
+15 seconds for the second question and then 10 seconds for the last question
+the questions will be randomized each time the players play.
+
+make a function for a start button
+make a function to go to the next question button
+make function to show the question
+make a function to shuffle the question
+make an array of questions
+within the array there will be the correct answer
+if the answer is correct it will equal to truthy
+if it is wrong it will be falsy
+Add a function to end game
+
+
+at the end of the game the game will show you how many questions you will have right.
+if you go 1/3 a potato will show up
+2/3 will be potato chips
+3/3 you will have mash potatoes
