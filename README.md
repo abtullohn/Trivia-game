@@ -24,7 +24,9 @@ at the end of the game the game will show GAME OVER!
 Hello everyone! Welcome to your Below Average Trivia game.
 The reason why I picked this game is because it is one of my favorite games to play in a group setting! The theme for this trivia will be POTATOES. I dont know about you guys but through 3 weeks of this cohort I personally feel like a potato. 
 
-<!-- <screenshots> -->
+<img src="https://i.imgur.com/zDUQF19.png">
+<img src="https://i.imgur.com/ERnjN4R.png">
+
 ```js
 function selectAnswer(e) {
   const selectedButton = e.target
