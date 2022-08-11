@@ -6,10 +6,15 @@ const questionContainerElement = document.getElementById('question-container')
 const nextButton = document.getElementById('next-btn')
 const questionElement = document.getElementById('question')
 const answerButtonsElement = document.getElementById('answer-buttons')
+const endGame = document.getElementById('ending')
+
+
+
 
 let shuffledQuestions 
 let currentQuestionIndex
 
+//  endGame.classList.toggle('hide')
 startButton.addEventListener('click', startGame)
 nextButton.addEventListener('click', () => {
   currentQuestionIndex++
@@ -18,9 +23,12 @@ nextButton.addEventListener('click', () => {
 
 function startGame() {
     startButton.classList.add('hide')
-    questionContainerElement.classList.remove('hide')  
+    // answerButtons.classList.add('hide')
+    questionContainerElement.classList.remove('hide')
+    
     shuffledQuestions = questions.sort(() => Math.random() - .5)
     currentQuestionIndex = 0
+
     setNextQuestion()
     
 }
@@ -41,7 +49,9 @@ function showQuestion(question) {
         }
         button.addEventListener('click', selectAnswer)
         answerButtonsElement.appendChild(button)
+
       })
+      
 }
 
 function resetState() {
@@ -49,9 +59,13 @@ function resetState() {
   nextButton.classList.add('hide')
   while (answerButtonsElement.firstChild) {
     answerButtonsElement.removeChild(answerButtonsElement.firstChild)
-  }
-}
+    questionElement.innerText = ('GAMEOVER')
 
+    //trying to make an if statement to check the array of questions
+    
+
+}
+}
 
 function selectAnswer(e) {
   const selectedButton = e.target
@@ -67,6 +81,8 @@ function selectAnswer(e) {
   } else {
     startButton.innerText = 'Restart'
     startButton.classList.remove('hide')
+   
+   
   }
 }
 function setStatusClass(element, correct) {
@@ -79,11 +95,19 @@ function setStatusClass(element, correct) {
     element.classList.add('wrong')
    
   }
-}
+  }
+
 function clearStatusClass(element) {
   element.classList.remove('correct')
   element.classList.remove('wrong')
+  
 }
+// function endGame(){
+//     if (shuffledQuestions.length == currentQuestionIndex + 1)
+//     {
+//         questionElement.innerText = 'End Game'
+//     }
+// }
 
 
 let questions = [
@@ -134,7 +158,9 @@ let questions = [
     },
    
    
-]
+];
+// reusultButton.addEventListener('click',showResult);
+
 
 
 
