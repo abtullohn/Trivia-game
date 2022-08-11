@@ -59,7 +59,7 @@ function resetState() {
   nextButton.classList.add('hide')
   while (answerButtonsElement.firstChild) {
     answerButtonsElement.removeChild(answerButtonsElement.firstChild)
-    questionElement.innerText = ('GAMEOVER')
+    questionElement.innerText = ('GAMEOVER!')
 
     //trying to make an if statement to check the array of questions
     
