@@ -1,10 +1,18 @@
+*{
+    box-sizing: content-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 body {
     background-color:rgb(255,194,10);
     padding: 10px;
     margin: 10px;
     width: 800px;
     height: 80%;
-    justify-content: center;
+    display: flex;
+    justify-content: space-around;
     align-items: center;
     flex-direction: column;
     font-family:monospace;
@@ -20,6 +28,7 @@ h1 {
     height: 100%;
     align-items: flex-start;
     background-color: rgb(153,79,0);
+    
 }
 
 .container {
@@ -32,6 +41,7 @@ h1 {
     color:darkturquoise;
     border-radius: 5px;
     padding: 10px;
+    box-sizing: border-box;
   
 
 }
@@ -44,20 +54,25 @@ h1 {
     background-color: rgb(153,79,0);
     align-content: space-around;
     font-size: 28px;
-    border-radius: 10px;
+    border-radius: 5px;
    
     
 
 }
 #question{
     background-color:rgb(153,79,0);
-    border-radius: 20px;
-    /* margin-top: 10px;
-    margin-bottom: 10px; */
+    background-position: center;
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     padding: 10px;
-    margin: 10px;
+    margin-left: 10px;
     width: 800px;
     height: 80%;
+    align-items: center;
+    align-content: space-around;
+    -ms-flex-align: center;
+    
 
 
 
@@ -69,10 +84,10 @@ h1 {
     
     
 }
-.start-btn {
+/* .start-btn {
     margin-top: 20px;
     gap: 10px;
-}
+} */
 
 .btn-grid {
     display: grid;
@@ -97,5 +112,19 @@ h1 {
 .btn {
     font-size: 32px;
     font-family:monospace;
+}
+
+.controls{
+   /* display: flex; */
+   /* flex-direction: row;
+   align-content: center;
+   justify-content: center;
+   padding: 4px 4px 4px 4px;
+   gap: 10px; */
+   display: grid;
+   grid-template-columns: 2fr 2fr 1fr;
+   gap: 10px;
+
+
 }
 
