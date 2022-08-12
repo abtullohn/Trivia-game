@@ -24,32 +24,19 @@ at the end of the game the game will show GAME OVER!
 Hello everyone! Welcome to your Below Average Trivia game.
 The reason why I picked this game is because it is one of my favorite games to play in a group setting! The theme for this trivia will be POTATOES. I dont know about you guys but through 3 weeks of this cohort I personally feel like a potato. 
 
-<img src="https://i.imgur.com/zDUQF19.png">
-<img src="https://i.imgur.com/ERnjN4R.png">
+<img src="https://i.imgur.com/tMS0JhH.png">
+<img src="https://i.imgur.com/MlIkvL1.png">
 
 ```js
-function selectAnswer(e) {
-  const selectedButton = e.target
-  console.log(selectedButton)
-  const correct = selectedButton.dataset.correct
-  setStatusClass(e.target,correct)
-  Array.from(answerButtonsElement.children).forEach(button => {
-    setStatusClass(button, button.dataset.correct)
-    
-  })
-  if (shuffledQuestions.length > currentQuestionIndex + 1) {
-    nextButton.classList.remove('hide')
-  } else {
-    startButton.innerText = 'Restart'
-    startButton.classList.remove('hide')
-   
-   
-  }
+function setNextQuestion() {
+  resetState()
+  showQuestion(shuffledQuestions[currentQuestionIndex])
 }
+  
 
 ```
 The technologies that i've used to make this game possible is JS,HTML and CSS.
-Throughout this project I am most proud of is setting a e.target for my answer buttons. Orignally when i click the answer it would color out my whole screen then i went into my function and set a target for the answer button therefore i could focus the background color into my answer buttons.
+Throughout this project I am most proud of is using resetState(). What this function does is that it re-renders the code to update it.
 
 Here's the link to my game https://abtullohn.github.io/Trivia-game/
 
